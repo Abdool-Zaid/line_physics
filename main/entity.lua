@@ -1,4 +1,13 @@
 local res = {}
+function invert_line(tab)
+    local n = #tab
+    for i = n, 1, -2 do
+        table.insert(tab, tab[i-3])
+        table.insert(tab, tab[i-2])
+    end
+    print(#tab)
+    
+end
 
 function localise_coor(coordinates)
     local coor = coordinates
@@ -29,6 +38,7 @@ end
 function res.create_line_shape_coordinates(coordinates)
     local coor = coordinates
     coor = localise_coor(coor)
+    invert_line(coor)
    return coor
     
 end
