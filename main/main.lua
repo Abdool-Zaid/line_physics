@@ -19,10 +19,8 @@ end
 
 function love.mousereleased(x,y,button)
     if button == 1 then
-        entity.create_line_shape(Environment, draw.get_segments())
-        for index, value in ipairs(Environment:getBodies()) do
-            print(value:getX())
-        end
+        phys.create_line_shape(entity.create_line_shape_coordinates(draw.get_segments()))
+      
         draw.Mouse_released()
     elseif button == 2 then
         draw.handle_right_click()
@@ -34,5 +32,5 @@ end
 function love.draw()
 
     draw.trace()
-    -- phys.render_world()
+    phys.render_world()
 end

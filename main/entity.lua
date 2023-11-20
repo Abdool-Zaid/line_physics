@@ -1,5 +1,5 @@
 local res = {}
-local line_shape_index =1
+
 function localise_coor(coordinates)
     local coor = coordinates
     local output = {}
@@ -24,34 +24,12 @@ return output
 end
 
 
-function res.world_border(world, border_name)
-    local bname = border_name or "border"
-    border = {}
-border.b = love.physics.newBody(world, 1,1, "static")
-local borderPoints = {
-    0, 0,
-    love.graphics.getWidth(), 0,
-    love.graphics.getWidth(), love.graphics.getHeight(),
-    0, love.graphics.getHeight(),
-    0,0
-}
-border.s=""
-border.s = love.physics.newChainShape(false, borderPoints)
-border.f = love.physics.newFixture(border.b, border.s)
-border.f:setUserData(bname)
-    return border
-end
 
-function res.create_line_shape(world ,coordinates)
+
+function res.create_line_shape_coordinates(coordinates)
     local coor = coordinates
     coor = localise_coor(coor)
-    obj={}
-    obj.b = love.physics.newBody(world, 1,1, "dynamic")
-    obj.s=""
-    obj.s = love.physics.newChainShape(false, coor)
-    obj.f = love.physics.newFixture(obj.b, obj.s)
-    obj.f:setUserData("line"..line_shape_index)
-    line_shape_index= line_shape_index + 1
+   return coor
     
 end
 return res
