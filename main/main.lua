@@ -3,16 +3,15 @@ local draw = require("main.draw")
 local entity = require("main.entity")
 local coor = {}
 function love.load()
-    Environment = phys.init_world(10)
-end
+    Environment = phys.init_world(1)
+end 
 
 function love.update(dt)
     coor.x, coor.y = love.mouse.getPosition()
         
     draw.build_char(coor.x,coor.y)
     draw.clear()
-    
-    Environment:update(dt)
+   phys.update(dt)
 
     
 end
